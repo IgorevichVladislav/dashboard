@@ -1,0 +1,27 @@
+<div class="progress"
+>
+  <button mat-icon-button class="progress__delete-icon" (click)="deleteWidget.emit(data().id)">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <div class="progress__info ">
+    <span class="progress__text">
+    Название проекта: {{ data().name }}
+    </span>
+  </div>
+
+  Задачи: {{ data().tasksCompleted }} / {{ data().tasksTotal }}
+  <div class="progress__bar ">
+    <div
+      class="progress__bar-inside"
+      [style.width.%]="(data().tasksCompleted / data().tasksTotal) * 100">
+      {{ (data().tasksCompleted / data().tasksTotal) * 100 | number:'1.0-0' }}%
+    </div>
+  </div>
+  <div class="progress__date">
+    <p>Дата начала: {{ data().startDate | date: 'MM.dd.yyyy'}}</p>
+    <p>Дата окончания: {{ data().endDate | date:'MM.dd.yyyy'}}</p>
+  </div>
+
+</div>
+
+

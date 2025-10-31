@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  border: 1px solid var(--black-color);
+  border-radius: 4px;
+  padding: 0 24px 24px 24px;
+  width: 100%;
+  cursor: move;
+}
+
+.progress {
+  width: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.progress__delete-icon {
+  margin-left: auto;
+  color: red;
+}
+.progress__info {
+  color: darkblue;
+}
+.progress__bar {
+  border: 2px solid #e0f7fa;
+  border-radius: 4px;
+  background-color: lightgray;
+}
+.progress__bar-inside {
+  padding-left: 4px;
+  background: linear-gradient(90deg, #00b4db, #0083b0);
+  animation: pulse 2s ease-in-out infinite;
+}
+.progress__date {
+  text-align: right;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/*# sourceMappingURL=progress-widget.component.css.map */

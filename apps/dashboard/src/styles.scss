@@ -1,0 +1,67 @@
+@use 'fonts';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --anti-flash-white: #f0f2f5;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  outline: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+//------------------------------------------ Reset
+
+body {
+  height: 100dvh;
+  font-family: 'JetBrains Mono', sans-serif;
+  color: var(--light-color);
+  background-color: var(--white-color);
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sdk-drop-list-dragging {
+  color: yellow;
+}

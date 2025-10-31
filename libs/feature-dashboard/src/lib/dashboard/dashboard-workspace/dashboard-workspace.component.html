@@ -1,0 +1,59 @@
+<div class="dashboard__header">
+  <h1 class="dashboard__title">Dashboard</h1>
+
+  <button
+    class="dashboard__add-button"
+    mat-raised-button [mat-menu-trigger-for]="widgetMenu"
+  >
+    <mat-icon>add_circle</mat-icon>
+    Добавить
+  </button>
+  <mat-menu #widgetMenu="matMenu">
+    @for (data of widgetsToAdd(); track data.id) {
+      <button mat-menu-item (click)="addWidget(data)"
+
+      >
+        {{ data.name }}
+      </button>
+    } @empty {
+      Виджеты отсутствуют
+    }
+  </mat-menu>
+</div>
+
+
+<div class="dashboard__body-wrapper"
+
+     cdkDropListGroup>
+
+  <div #widgetContainerRef></div>
+  <div
+    #dashboardBody
+    class="dashboard__body"
+  >
+    @if (widgets(); as widgets) {
+      @for (widget of widgets; track widget.id) {
+
+        <div
+          cdkDropList
+          [cdkDropListData]="widget.id"
+          (cdkDropListDropped)="drop($event)"
+        >
+
+          <div class="dashboard__item" cdkDrag [cdkDragData]="widget">
+            <lib-progress-widget
+              [data]="widget"
+              (deleteWidget)="deleteById(widget.id)">
+
+            </lib-progress-widget>
+
+            <div *cdkDragPlaceholder class="drag-placeholder"></div>
+          </div>
+
+        </div>
+      }
+    }
+  </div>
+</div>
+
+
