@@ -1,47 +1,129 @@
-:host {
-  display: block;
-  border: 1px solid var(--black-color);
-  border-radius: 4px;
-  padding: 0 24px 24px 24px;
-  width: 100%;
+.progress-widget {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.progress-widget mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px 0;
   cursor: move;
 }
-
-.progress {
-  width: 250px;
-  border-radius: 12px;
-  overflow: hidden;
+.progress-widget mat-card-header mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.progress-widget mat-card-header mat-card-title mat-icon {
+  color: #4CAF50;
+}
+.progress-widget mat-card-header .delete-btn {
+  margin-left: auto;
+  color: #666;
+}
+.progress-widget mat-card-header .delete-btn:hover {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+.progress-widget mat-card-content {
+  padding: 16px;
+  max-width: 300px;
+}
+.progress-widget .project-info {
+  margin-bottom: 20px;
+}
+.progress-widget .project-info .project-name {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+.progress-widget .project-info .project-status {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.progress-widget .project-info .project-status.development {
+  background: #E3F2FD;
+  color: #1976D2;
+}
+.progress-widget .project-info .project-status.in-progress {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+.progress-widget .project-info .project-status.review {
+  background: #F3E5F5;
+  color: #9C27B0;
+}
+.progress-widget .project-info .project-status.done {
+  background: #E8F5E8;
+  color: #4CAF50;
+}
+.progress-widget .progress-section {
+  margin-bottom: 20px;
+}
+.progress-widget .progress-section .progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.progress-widget .progress-section .progress-header .progress-percentage {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4CAF50;
+}
+.progress-widget .progress-section .progress-header .progress-text {
+  font-size: 14px;
+  color: #666;
+}
+.progress-widget .progress-section .progress-bar {
+  height: 8px;
+  border-radius: 4px;
+}
+.progress-widget .stats-grid {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
 }
-.progress__delete-icon {
-  margin-left: auto;
-  color: red;
+.progress-widget .stats-grid .stat-item {
+  text-align: center;
+  padding: 12px;
+  background: #F5F5F5;
+  border-radius: 8px;
 }
-.progress__info {
-  color: darkblue;
+.progress-widget .stats-grid .stat-item .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
 }
-.progress__bar {
-  border: 2px solid #e0f7fa;
-  border-radius: 4px;
-  background-color: lightgray;
+.progress-widget .stats-grid .stat-item .stat-label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
 }
-.progress__bar-inside {
-  padding-left: 4px;
-  background: linear-gradient(90deg, #00b4db, #0083b0);
-  animation: pulse 2s ease-in-out infinite;
+.progress-widget .timeline-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.progress__date {
-  text-align: right;
+.progress-widget .timeline-info .date-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
 }
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
+.progress-widget .timeline-info .date-item mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 /*# sourceMappingURL=progress-widget.component.css.map */

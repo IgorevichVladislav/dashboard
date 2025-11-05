@@ -1,0 +1,213 @@
+// timeline-widget.component.scss
+.timeline-widget {
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  mat-card-header {
+    padding: 16px 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+
+      mat-icon {
+        color: #2196F3;
+      }
+    }
+
+    .delete-btn {
+      margin-left: auto;
+      color: #666;
+
+      &:hover {
+        color: #f44336;
+        background: rgba(244, 67, 54, 0.1);
+      }
+    }
+  }
+
+  mat-card-content {
+    padding: 16px;
+  }
+
+  .project-info {
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .timeline-status {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      background: #E8F5E8;
+      color: #4CAF50;
+
+      &.delayed {
+        background: #FFEBEE;
+        color: #f44336;
+      }
+    }
+  }
+
+  .custom-timeline {
+    margin: 20px 0;
+
+    .timeline-track {
+      position: relative;
+      height: 8px;
+      background: #E0E0E0;
+      border-radius: 4px;
+      margin-bottom: 8px;
+
+      .timeline-progress {
+        height: 100%;
+        background: #4CAF50;
+        border-radius: 4px;
+        transition: width 0.3s ease;
+      }
+
+      .timeline-current {
+        position: absolute;
+        top: -6px;
+        transform: translateX(-50%);
+        color: #2196F3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+        }
+
+      }
+    }
+
+    .current-tooltip {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 10px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #666;
+
+      .timeline-label {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        mat-icon {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+
+        &.start mat-icon {
+          color: #4CAF50;
+        }
+
+        &.end mat-icon {
+          color: #2196F3;
+        }
+      }
+    }
+  }
+
+  .days-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .day-stat {
+      text-align: center;
+      padding: 16px;
+      border-radius: 8px;
+
+      &.passed {
+        background: #E8F5E8;
+        color: #4CAF50;
+      }
+
+      &.remaining {
+        background: #E3F2FD;
+        color: #2196F3;
+
+        &.delayed {
+          background: #FFEBEE;
+          color: #f44336;
+        }
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+
+      .stat-percentage {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .overall-progress-section {
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .progress-title {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .progress-percentage {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .overall-progress-bar {
+      height: 8px;
+      border-radius: 4px;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .days-stats {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+}

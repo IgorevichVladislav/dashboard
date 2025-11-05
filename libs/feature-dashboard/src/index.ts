@@ -1,2 +1,2 @@
-export * from './lib/dashboard/dashboard.component';
-export * from './lib/dashboard/dashboard-workspace';
+export * from './lib/dashboard/index';
+

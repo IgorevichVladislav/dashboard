@@ -1,0 +1,38 @@
+<form [formGroup]="filtersForm">
+  <div class="sidebar">
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Поиск по имени</mat-label>
+      <input
+        formControlName="searchName"
+        matInput
+        placeholder="Введите название">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Фильтр по статусу</mat-label>
+      <mat-select
+      formControlName="searchStatus"
+      >
+
+        <mat-option value="all">Все</mat-option>
+        <mat-option value="development">Разработка</mat-option>
+        <mat-option value="in-progress">В работе</mat-option>
+        <mat-option value="review">Ревью</mat-option>
+        <mat-option value="done">Завершён</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      <div class="sidebar__list">
+        @for (project of filteredProjects(); track project.id) {
+          <button class="sidebar__item"
+                  type="button"
+                  (click)=onSelect(project)>
+            {{ project.name }}
+            <small class="sidebar__status">[{{ project.status }}]</small>
+          </button>
+        } @empty {
+          <div class="empty">ичего не найдено</div>
+        }
+      </div>
+  </div>
+</form>

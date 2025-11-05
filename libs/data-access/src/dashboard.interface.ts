@@ -1,4 +1,5 @@
-export type WidgetStatus = 'development' | 'in-progress' | 'review' | 'done';
+
+export type WidgetType = 'progress' | 'task' | 'timeline';
 
 export interface Widget {
   id: number
@@ -7,7 +8,14 @@ export interface Widget {
   tasksTotal: number
   startDate: string
   endDate: string
-  status: WidgetStatus
-  backgroundColor?: string
-  color?: string
+  status: string
+}
+
+export interface WidgetConfig {
+  projectId: number;
+  widgets: {
+    id: number;
+    type: WidgetType;
+    data: Widget;
+  }[];
 }

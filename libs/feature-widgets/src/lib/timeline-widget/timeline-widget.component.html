@@ -1,0 +1,75 @@
+<!-- timeline-widget.component.html -->
+<mat-card class="timeline-widget">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>schedule</mat-icon>
+      Таймлайн проекта
+    </mat-card-title>
+
+    <button
+      mat-icon-button
+      class="delete-btn"
+      (click)="onDelete()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="project-info">
+      <h3>{{ dataTimelineWidget().name }}</h3>
+      <span class="timeline-status" [class.delayed]="isDelayed()">
+        {{ isDelayed() ? 'Отстает от графика' : 'По графику' }}
+      </span>
+    </div>
+
+    <!-- Кастомная визуализация таймлайна -->
+    <div class="custom-timeline">
+          <div class="current-tooltip">Сегодня</div>
+      <div class="timeline-track">
+        <div class="timeline-progress" [style.width.%]="timelineSegments().passedPercentage"></div>
+        <div class="timeline-current" [style.left.%]="timelineSegments().currentPosition">
+          <mat-icon>today</mat-icon>
+        </div>
+      </div>
+      <div class="timeline-labels">
+        <span class="timeline-label start">
+          <mat-icon>play_arrow</mat-icon>
+          {{ dataTimelineWidget().startDate | date:'dd.MM.yy' }}
+        </span>
+        <span class="timeline-label end">
+          <mat-icon>flag</mat-icon>
+          {{ dataTimelineWidget().endDate | date:'dd.MM.yy' }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Статистика дней -->
+    <div class="days-stats">
+      <div class="day-stat passed">
+        <div class="stat-value">{{ daysPassed() }}</div>
+        <div class="stat-label">Дней прошло</div>
+        <div class="stat-percentage">{{ timelineSegments().passedPercentage | number:'1.0-0' }}%</div>
+      </div>
+
+      <div class="day-stat remaining" [class.delayed]="isDelayed()">
+        <div class="stat-value">{{ displayDaysRemaining() }}</div>
+        <div class="stat-label">{{ isDelayed() ? 'Дней отставания' : 'Дней осталось' }}</div>
+        <div class="stat-percentage">{{ timelineSegments().remainingPercentage | number:'1.0-0' }}%</div>
+      </div>
+    </div>
+
+    <!-- Общий прогресс -->
+    <div class="overall-progress-section">
+      <div class="progress-header">
+        <span class="progress-title">Общий прогресс</span>
+        <span class="progress-percentage">{{ progressPercentage() | number:'1.0-0' }}%</span>
+      </div>
+      <mat-progress-bar
+        class="overall-progress-bar"
+        mode="determinate"
+        [value]="progressPercentage()"
+        [color]="isDelayed() ? 'warn' : 'primary'">
+      </mat-progress-bar>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,28 @@
+:host {
+  padding: 24px;
+  background-color: var(--anti-flash-white);
+}
+
+.sidebar {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: 16px;
+  }
+
+  &__item {
+    text-align: start;
+    margin: 4px 0;
+    background-color: #ffc8d4;
+    border: 1px solid rgba(255, 200, 212, 0.5);;
+    border-radius: 8px;
+    padding: 4px 8px;
+  }
+
+  &__status {
+    display: none;
+  }
+}
+
+

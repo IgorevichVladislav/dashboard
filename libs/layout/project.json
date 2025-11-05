@@ -1,7 +1,7 @@
 {
-  "name": "domain",
+  "name": "layout",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "domain/src",
+  "sourceRoot": "libs/layout/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": [],

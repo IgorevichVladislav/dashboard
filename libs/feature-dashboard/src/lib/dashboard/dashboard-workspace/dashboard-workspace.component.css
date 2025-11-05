@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px 0 16px;
+  padding: 16px;
 }
 
 .dashboard__body {
@@ -17,6 +17,16 @@
 .dashboard__item {
   display: grid;
   height: 100%;
+}
+
+.dashboard-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.widgets-container {
+  display: flex;
+  gap: 12px;
 }
 
 /*# sourceMappingURL=dashboard-workspace.component.css.map */

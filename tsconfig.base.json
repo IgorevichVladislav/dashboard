@@ -19,7 +19,8 @@
       "@db/sidebar": ["libs/sidebar/src/index.ts"],
       "@db/data-access": ["libs/data-access/src/index.ts"],
       "@db/widgets": ["libs/feature-widgets/src/index.ts"],
-      "@db/dashboard": ["libs/feature-dashboard/src/index.ts"]
+      "@db/dashboard": ["libs/feature-dashboard/src/index.ts"],
+      "@db/layout": ["libs/layout/src/index.ts"]
     },
     "baseUrl": ".",
     "rootDir": "."

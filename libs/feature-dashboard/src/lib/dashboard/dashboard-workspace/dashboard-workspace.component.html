@@ -1,59 +1,87 @@
 <div class="dashboard__header">
-  <h1 class="dashboard__title">Dashboard</h1>
+  <h1 class="dashboard__title">{{ currentProject()?.name }}</h1>
 
   <button
-    class="dashboard__add-button"
-    mat-raised-button [mat-menu-trigger-for]="widgetMenu"
-  >
+    mat-raised-button
+    [matMenuTriggerFor]="menu"
+    [disabled]="availableWidgets().length === 0">
     <mat-icon>add_circle</mat-icon>
-    Добавить
+    Добавить виджет
   </button>
-  <mat-menu #widgetMenu="matMenu">
-    @for (data of widgetsToAdd(); track data.id) {
-      <button mat-menu-item (click)="addWidget(data)"
-
-      >
-        {{ data.name }}
-      </button>
-    } @empty {
-      Виджеты отсутствуют
-    }
-  </mat-menu>
 </div>
 
+<!-- Меню добавления -->
+<mat-menu #menu="matMenu">
+  @for (widget of availableWidgets(); track widget.type) {
+    <button mat-menu-item (click)="addWidget(widget.type)">
+      <mat-icon>widgets</mat-icon>
+      {{ widget.name }}
+    </button>
+  }
+</mat-menu>
 
-<div class="dashboard__body-wrapper"
+<!-- Контейнер для drag'n'drop -->
+<div cdkDropListGroup class="dashboard-controls">
 
-     cdkDropListGroup>
-
-  <div #widgetContainerRef></div>
   <div
     #dashboardBody
-    class="dashboard__body"
+    cdkDropList
+    [cdkDropListData]="addedWidgetTypes()"
+    (cdkDropListDropped)="drop($event)"
+    class="widgets-container"
   >
-    @if (widgets(); as widgets) {
-      @for (widget of widgets; track widget.id) {
 
-        <div
-          cdkDropList
-          [cdkDropListData]="widget.id"
-          (cdkDropListDropped)="drop($event)"
-        >
-
-          <div class="dashboard__item" cdkDrag [cdkDragData]="widget">
-            <lib-progress-widget
-              [data]="widget"
-              (deleteWidget)="deleteById(widget.id)">
-
-            </lib-progress-widget>
-
-            <div *cdkDragPlaceholder class="drag-placeholder"></div>
-          </div>
-
-        </div>
-      }
+    @for (widgetType of addedWidgetTypes(); track widgetType; let i = $index) {
+      <div cdkDrag
+           cdkDragPreviewContainer="parent"
+           class="widget-item">
+        <ng-container #widgetContainer></ng-container>
+        <div *cdkDragPlaceholder class="drag-placeholder"></div>
+      </div>
+    }
+    <!-- Пустое состояние -->
+    @if (addedWidgetTypes().length === 0) {
+      <div class="empty-state">
+        <mat-icon>dashboard</mat-icon>
+        <p>Добавьте виджеты для отображения данных</p>
+      </div>
     }
   </div>
 </div>
+
+<!--<div #widgetContainerRef></div>-->
+<!--<div class="dashboard__body-wrapper"-->
+
+<!--     cdkDropListGroup>-->
+
+<!--  <div #widgetContainerRef></div>-->
+<!--  <div-->
+<!--    #dashboardBody-->
+<!--    class="dashboard__body"-->
+<!--  >-->
+<!--    @if (widgets(); as widgets) {-->
+<!--      @for (widget of widgets; track widget.id) {-->
+
+<!--        <div-->
+<!--          cdkDropList-->
+<!--          [cdkDropListData]="widget.id"-->
+<!--          (cdkDropListDropped)="drop($event)"-->
+<!--        >-->
+
+<!--          <div class="dashboard__item" cdkDrag [cdkDragData]="widget">-->
+<!--            <lib-progress-widget-->
+<!--              [data]="widget"-->
+<!--              (deleteWidget)="deleteById(widget.id)">-->
+
+<!--            </lib-progress-widget>-->
+
+<!--            <div *cdkDragPlaceholder class="drag-placeholder"></div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      }-->
+<!--    }-->
+<!--  </div>-->
+<!--</div>-->
 
 

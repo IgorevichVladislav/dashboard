@@ -1,0 +1,35 @@
+<mat-card class="tasks-widget">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>checklist</mat-icon>
+      Статистика задач
+    </mat-card-title>
+    <button mat-icon-button (click)="onDelete()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <h3>{{ dataTaskWidget().name }}</h3>
+    <span class="status-badge" [class]="dataTaskWidget().name">
+      {{ completionRate() }}% выполнено
+    </span>
+
+    <div #chart></div>
+
+    <div class="tasks-breakdown">
+      <div class="task-category completed">
+        <div class="task-count">{{ dataTaskWidget().tasksCompleted }}</div>
+        <div class="task-label">Выполнено</div>
+      </div>
+      <div class="task-category remaining">
+        <div class="task-count">{{ remainingTasks() }}</div>
+        <div class="task-label">Осталось</div>
+      </div>
+      <div class="task-category total">
+        <div class="task-count">{{ dataTaskWidget().tasksTotal }}</div>
+        <div class="task-label">Всего</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
